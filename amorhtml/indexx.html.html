@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi amor ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#ff9ecf,#ffd6ec);
+text-align:center;
+overflow-x:hidden;
+}
+
+.contenedor{
+margin-top:80px;
+padding:20px;
+}
+
+button{
+padding:15px 35px;
+font-size:22px;
+border:none;
+border-radius:20px;
+background:#ff4d88;
+color:white;
+cursor:pointer;
+}
+
+.carta{
+display:none;
+background:white;
+padding:30px;
+border-radius:20px;
+max-width:700px;
+margin:auto;
+margin-top:30px;
+box-shadow:0 10px 40px rgba(0,0,0,0.2);
+}
+
+p{
+font-size:18px;
+line-height:1.6;
+}
+
+/* CONTADOR */
+
+.contador{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.caja{
+background:#2c2c2c;
+color:white;
+padding:20px;
+border-radius:12px;
+width:90px;
+}
+
+.numero{
+font-size:30px;
+font-weight:bold;
+}
+
+.texto{
+font-size:12px;
+letter-spacing:2px;
+margin-top:5px;
+}
+
+/* FOTOS */
+
+.fotos{
+margin-top:30px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.fotos img{
+height:260px;
+width:auto;
+border-radius:12px;
+object-fit:cover;
+}
+
+/* CORAZONES */
+
+.heart{
+position:fixed;
+bottom:-10px;
+font-size:20px;
+animation:flotar 6s linear infinite;
+pointer-events:none;
+}
+
+@keyframes flotar{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-100vh);
+opacity:0;
+}
+}
+
+/* MODO CELULAR */
+
+@media (max-width:600px){
+
+.caja{
+width:70px;
+padding:15px;
+}
+
+.numero{
+font-size:22px;
+}
+
+.fotos img{
+width:90%;
+height:auto;
+}
+
+button{
+font-size:20px;
+padding:14px 30px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+<button onclick="abrirCarta()">Abre la carta 💌</button>
+
+<div class="carta" id="carta">
+
+<h2>Para mi niña hermosa ❤️</h2>
+
+<p>
+Holis corazón de melón. Esta página es para que cada que entres recuerdes
+que tienes a una niña que te ama con toda su alma, que daría su vida por ti
+y todo lo que tiene por verte feliz siempre siempre siempre amor que pase lo
+que pase siempre estara para ti por que tu eres lo mas hermoshoo del mndo
+</p>
+
+<p>
+Amo cada parte de ti y es inevitable no hacerlo porque siempre pienso en ti.
+Muchísimas gracias por siempre aguantarme amor jsjsjs
+</p>
+
+<p>
+Eres y serás el amor de mi vida por siempre siempre amorrr.
+Gracias por estos dos años juntos amor.
+Gracias gracias amor de mi vida y siempre lo seras ❤️
+</p>
+
+<div class="contador">
+
+<div class="caja">
+<div class="numero" id="dias">0</div>
+<div class="texto">DAYS</div>
+</div>
+
+<div class="caja">
+<div class="numero" id="horas">0</div>
+<div class="texto">HOURS</div>
+</div>
+
+<div class="caja">
+<div class="numero" id="minutos">0</div>
+<div class="texto">MINUTES</div>
+</div>
+
+<div class="caja">
+<div class="numero" id="segundos">0</div>
+<div class="texto">SECONDS</div>
+</div>
+
+</div>
+
+<div class="fotos">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function abrirCarta(){
+document.getElementById("carta").style.display="block";
+}
+
+var fechaInicio = new Date("2024-03-08T00:00:00");
+
+function actualizarContador(){
+
+var ahora = new Date();
+var diferencia = ahora - fechaInicio;
+
+var dias = Math.floor(diferencia/(1000*60*60*24));
+var horas = Math.floor((diferencia/(1000*60*60))%24);
+var minutos = Math.floor((diferencia/(1000*60))%60);
+var segundos = Math.floor((diferencia/1000)%60);
+
+document.getElementById("dias").innerText=dias;
+document.getElementById("horas").innerText=horas;
+document.getElementById("minutos").innerText=minutos;
+document.getElementById("segundos").innerText=segundos;
+
+}
+
+setInterval(actualizarContador,1000);
+
+function crearCorazon(){
+
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+10)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+setInterval(crearCorazon,300);
+
+</script>
+
+</body>
+</html>
